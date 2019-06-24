@@ -4,19 +4,6 @@ import './calculatorContainer.css';
 import { connect } from 'react-redux';
 
 class CalculatorContainer extends React.Component {
-
-  incrementOne = () => {
-    this.setState(prevState => {
-        return {countTotal: prevState.countTotal + 1}
-     })
-  };
-
-  decrementOne = () => {
-    this.setState(prevState => {
-        return {countTotal: prevState.countTotal - 1}
-     })
-  };
-
   render() {
     return (
       <div className="vertical-align-center">
