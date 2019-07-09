@@ -18,8 +18,7 @@ class CalculatorContainer extends React.Component {
               <div className="col-12 d-flex justify-content-center px-0 calc-button-box">
                 <Button className="mr-5" variant="success" onClick={this.props.onIncrementCounter}>INCREMENT</Button>
                 <Button className="mr-5" variant="danger" onClick={this.props.onDecrementCounter}>DECREMENT</Button>
-                <Button className="mr-5" variant="info" onClick={this.props.onIncrementByFive}>ADD 5</Button>
-                <Button varraint="primary" onClick={this.props.onLaunchApi}>LAUNCH API</Button>
+                <Button variant="info" onClick={this.props.onIncrementByFive}>ADD 5</Button>
              </div>
              <div className="col-12">
                 <h2>Current Total: {this.props.ctr} </h2>
@@ -40,9 +39,9 @@ class CalculatorContainer extends React.Component {
              </div>
              <div className="col-12">
                <div>
-                <h2>User ID: {this.props.payload.userId} </h2>
-                <h2>ID Number: {this.props.payload.id} </h2>
-                <h2>Title: {this.props.payload.title} </h2>
+                <h2>User ID: {this.props.userData.userId} </h2>
+                <h2>ID Number: {this.props.userData.id} </h2>
+                <h2>Title: {this.props.userData.title} </h2>
                 {this.props.hasSucceeded && (
                   <div>
                     API information was fetched successfully
@@ -59,7 +58,6 @@ class CalculatorContainer extends React.Component {
              </div>
           </div>   
         </div>
-        
       </div>
     );
   }
@@ -68,11 +66,10 @@ class CalculatorContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     ctr: state.counter,
-    payload: state.apiData,
+    userData: state.apiData,
     isPending: state.isPending,
     hasFailed: state.hasFailed,
     hasSucceeded: state.hasSucceeded
-
   }
 }
 
@@ -84,5 +81,13 @@ const mapDispatchToProps = dispatch => {
     onLaunchApi: () => dispatch({type: 'LAUNCH_API'})
   }
 }
+
+CalculatorContainer.defaultProps = {
+  userData: {
+    userId: null,
+    id: null,
+    title: ''
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalculatorContainer);
