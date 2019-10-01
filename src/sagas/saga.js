@@ -30,7 +30,3 @@ export function* launchApi () {
 export function* watchIncreaseByFive() {
     yield takeEvery("INCREMENT_BY_FIVE", increaseByFive);
 }
-
-export function* watchLaunchApi() {
-    yield takeEvery("LAUNCH_API", launchApi);
-}

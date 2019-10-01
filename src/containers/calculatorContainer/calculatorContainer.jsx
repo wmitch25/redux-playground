@@ -4,8 +4,21 @@ import './calculatorContainer.css';
 import { connect } from 'react-redux';
 import LoadingOverlay from 'react-loading-overlay';
 import BounceLoader from 'react-spinners/BounceLoader'
+import Crud from '../../components/crud.jsx';
 
 class CalculatorContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {total: 0};
+    this.addTwo = this.addTwo.bind(this);
+  }
+
+addTwo() {
+  this.setState(prevState => ({
+    total: prevState.total + 2 
+  }));
+}
+
   render() {
     return (
       <div className="vertical-align-center calc-index">
@@ -16,14 +29,17 @@ class CalculatorContainer extends React.Component {
                 <hr />
               </div>
               <div className="col-12 d-flex justify-content-center px-0 calc-button-box">
+                <Button className="mr-5" variant="secondary" onClick={this.addTwo}>Add 2</Button>
                 <Button className="mr-5" variant="success" onClick={this.props.onIncrementCounter}>INCREMENT</Button>
                 <Button className="mr-5" variant="danger" onClick={this.props.onDecrementCounter}>DECREMENT</Button>
                 <Button variant="info" onClick={this.props.onIncrementByFive}>ADD 5</Button>
              </div>
              <div className="col-12">
-                <h2>Current Total: {this.props.ctr} </h2>
+                <h2>Redux Total: {this.props.ctr} </h2>
+                <h2>Local State Total(only works for add 2): {this.state.total}</h2>
              </div>
              <div className="col-12">
+                <hr />
                 <h1> Making a API call </h1>
                 <div className="calc-loading-indicator">
                 <LoadingOverlay
@@ -55,6 +71,7 @@ class CalculatorContainer extends React.Component {
                 )
                 }
                </div>
+               <Crud />
              </div>
           </div>   
         </div>
