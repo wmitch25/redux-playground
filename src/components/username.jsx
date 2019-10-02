@@ -4,15 +4,17 @@ import Button from 'react-bootstrap/Button';
 class Username extends Component {
     constructor(props) {
     super(props);
+    //setting initial state
     this.state = {  value: '',
                     myList: this.props.value
                  };
-
+    //binding our methods in the constructor
     this.handleChange = this.handleChange.bind(this);
   }
 
  
-  handleChange(event) { 
+  handleChange(event) {
+    //handles users typing in the text box    
     this.setState({value: event.target.value});
   }
  

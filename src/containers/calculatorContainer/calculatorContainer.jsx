@@ -9,11 +9,14 @@ import Crud from '../../components/crud.jsx';
 class CalculatorContainer extends React.Component {
   constructor(props) {
     super(props);
+    //setting initial state
     this.state = {total: 0};
+    //binding our methods in the constructor  
     this.addTwo = this.addTwo.bind(this);
   }
 
 addTwo() {
+  //if the add two method is called set state immutably to total +2
   this.setState(prevState => ({
     total: prevState.total + 2 
   }));
@@ -92,6 +95,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    //all of the dispatch actions that will be caught by ./store/reducer.jsx
     onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
     onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
     onIncrementByFive: () => dispatch({type: 'INCREMENT_BY_FIVE'}),
