@@ -26,14 +26,15 @@ class Crud extends React.Component {
       value: myVal,
       id: Math.random()
     }
-        //remove previous
         var my_array = this.state.items;
-        my_array.splice(index, 1);
+        my_array.map(item => {
+          if(item.id === itemId){
+            item.value = myVal
+          } 
+        })
         console.log(index);
-        
-        //add updated object
-        my_array.splice( index, 0, new_object );
-        
+      
+        //set state with new array
         this.setState(prevState => ({
         items: my_array
      }))
